@@ -13,8 +13,6 @@
     <body>
 
         <?php include '../views/partials/navbar.php' ?>
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/uikit.js"></script>
-        <script src="js/main.js"></script>
+        <?php include 'js/js_include.php' ?>
     </body>
 </html>
