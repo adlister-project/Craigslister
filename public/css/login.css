@@ -1,5 +1,23 @@
 form {
-  height: 15%;
-  width: 15%;
   text-align: center;
+}
+
+.uk-button-primary {
+  display: block;
+  margin-top: -15px;
+  margin-left: auto;
+}
+
+span {
+  font-size: 10px;
+  margin-top: 0px;
+  position: relative;
+  right: 10px;
+  display: block;
+}
+
+.uk-panel-box-primary {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: -50px;
 }
