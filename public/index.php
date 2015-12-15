@@ -15,6 +15,15 @@
     <body>
         <?php include '../views/partials/navbar.php' ?>
 
+        <div class="uk-container uk-container-center">
+            <div class="uk-block-primary uk-block">
+                <article>
+                    <h1 class="uk-article-title">What isn't in Craigs'Lists?</h1>
+                    <p class="uk-article-lead">We are Carigs' List of Lists. Buy, sell, trade, barter, you can find it all here! Have notifications sent directly to your phone so you never miss a sale. Now accepting BitCoin and other cryptocurrencies.</p>
+                </article>
+            </div>
+        </div>
+        <hr class="uk-grid-divider">
         <div class="uk-container-center">
             <div class="uk-grid data-uk-grid uk-container-center">
                 <div class="uk-width-medium-1-3">
