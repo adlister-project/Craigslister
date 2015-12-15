@@ -7,14 +7,17 @@
         <li class="">
             <a href="ads.show.php">Search Ads</a>
         </li>
+        <li class="">
+            <a href="ads.create.php">Create Ad</a>
+        </li>
     </ul>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
             <li class="">
-                <a href="users.create.php">Sign Up</a>
+                <a href="users.edit.php">Profile</a>
             </li>
             <li class="">
-                <a href="auth.login.php">Login</a>
+                <a href="auth.logout.php">Logout</a>
             </li>
         </ul>
     </div>
