@@ -9,12 +9,15 @@
     <body>
         <script type="text/javascript" src="js/uikit.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        </ul>
+        <div class="uk-container uk-container-center uk-text-center">
+    <div class="uk-grid" data-uk-grid-margin="">
+        <div class="uk-width-medium-1-2">
+                    <ul class="uk-subnav uk-subnav-line uk-flex-center">
+                        <li><a href="#">Domestic Slaves</a></li>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+        </div>
+        
     </body>
     </html>
