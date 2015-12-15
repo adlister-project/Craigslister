@@ -14,13 +14,37 @@
   <body>
     <?php include "../views/partials/navbar.php" ?>
     <?php include "../views/partials/header.php" ?>
-    <div class="uk-cover-background">
-    </div>
     <div class="uk-container side">
       <img src="http://placehold.it/200x200" alt="Profile Picture" />
       <h2>First and Last Name</h2>
       <h4>Email:</h4>
       <h4>Phone:</h4>
+    </div>
+    <div class="uk-container main">
+      <table class="uk-table uk-table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date Posted</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Titles</td>
+            <td>Descriptions</td>
+            <td>Dates</td>
+            <td>Status</td>
+          </tr>
+          <tr>
+            <td>Titles</td>
+            <td>Descriptions</td>
+            <td>Dates</td>
+            <td>Status</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <?php include "../views/partials/footer.php" ?>
     <?php include "js/js_include.php" ?>
