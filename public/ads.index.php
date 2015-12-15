@@ -4,20 +4,38 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/uikit.almost-flat.min.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <script type="text/javascript" src="js/uikit.min.js"></script>
         <title>ads index</title>
     </head>
     <body>
-        <script type="text/javascript" src="js/uikit.js"></script>
+            <?php include '../views/partials/navbar.php' ?>
+            <div class="uk-width-medium-1-2 uk-container-center">
+                <form class="uk-search" data-uk-search>
+                <input class="uk-search-field" type="search" placeholder="Search">
+                </form>
+            </div>
+           <div class="uk-grid">
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+            </div>
+                <div class="uk-grid">
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+            </div>
+                <div class="uk-grid">
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+            </div>
+                <div class="uk-grid">
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+                <div class="uk-width-1-3"><div class="uk-panel uk-panel-box"><img src="http://placehold.it/350x150"></div></div>
+            </div>
+      
+            <?php include '../views/partials/footer.php' ?>
         <script type="text/javascript" src="js/main.js"></script>
-        <div class="uk-container uk-container-center uk-text-center">
-    <div class="uk-grid" data-uk-grid-margin="">
-        <div class="uk-width-medium-1-2">
-                    <ul class="uk-subnav uk-subnav-line uk-flex-center">
-                        <li><a href="#">Domestic Slaves</a></li>
-                        <li><a href="#">Customer Support</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-        </div>
-        
     </body>
     </html>
