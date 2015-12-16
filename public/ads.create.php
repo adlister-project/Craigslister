@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="Price">Price</label>
-                                    <input type='number' placeholder='Price' name="price" id="price" min="0.01" step="0.01">
+                                    <input type='number' placeholder='Price' name="price" id="price" min="0.01" step="0.01" max="99999999.99">
                                 </div>                                
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="keyword_1">Ad Keyword 1</label>
