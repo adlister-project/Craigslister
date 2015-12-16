@@ -18,7 +18,7 @@
             </li>
         </ul>
     </div>
-        
+
     <a href="#offcanvas" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas=""></a>
     <div class="uk-navbar-brand uk-navbar-center uk-visible-small">Craigs'Lists</div>
-</nav>
+  </nav>
