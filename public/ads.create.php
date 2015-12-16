@@ -39,6 +39,10 @@
                                     <textarea class="uk-form-width-large" placeholder='Description' name='description' id="description" rows="5"></textarea>
                                 </div>
                                 <div class="uk-form-row uk-form-horizontal">
+                                    <label class="uk-form-label" for="Price">Price</label>
+                                    <input type='number' placeholder='Price' name="price" id="price" min="0.01" step="0.01">
+                                </div>                                
+                                <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="keyword_1">Ad Keyword 1</label>
                                     <input type='text' placeholder='Keyword #1' name="keyword_1" id="keyword_1">
                                 </div>
