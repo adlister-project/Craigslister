@@ -15,40 +15,47 @@
   <body>
     <?php include "../views/partials/navbar.php" ?>
     <?php include "../views/partials/header.php" ?>
-    <form action="index.html" method="post" class="uk-form">
-      <div class="uk-form-row">
-        <label for="username">Username *</label>
-        <input type="text" name="username" class="uk-form-width-medium">
-      </div>
-      <div class="uk-form-password uk-form-row">
-        <label for="password">Password *</label>
-        <input type="password" name="password" class="uk-form-width-medium">
-        <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
-      </div>
-      <div class="uk-form-password uk-form-row">
-        <label for="password">Confirm Password *</label>
-        <input type="password" name="password" class="uk-form-width-medium">
-        <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
-      </div>
-      <div class="uk-form-row">
-        <label for="email">Email *</label>
-        <input type="text" name="email" class="uk-form-width-medium">
-      </div>
-      <div class="uk-form-row">
-        <label for="first_name">First Name *</label>
-        <input type="text" name="first_name" class="uk-form-width-medium">
-      </div>
-      <div class="uk-form-row">
-        <label for="last_name">Last Name *</label>
-        <input type="text" name="last_name" class="uk-form-width-medium">
-      </div>
-      <div class="uk-form-row">
-        <label for="phone_number">Phone Number</label>
-        <input type="text" name="phone_number" class="uk-form-width-medium">
-      </div>
-      <span>* indicates a required field</span>
-      <button type="button" class="uk-button uk-button-primary"><i class="fa fa-user"></i> Register</button>
-    </form>
+    <div class="uk-container uk-container-center">
+      <h2>Register</h2>
+      <form action="index.html" method="post" class="uk-form">
+        <div class="uk-form-row">
+          <label for="username">Username *</label>
+          <input type="text" name="username" class="uk-form-width-medium">
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-password">
+            <label for="password">Password *</label>
+            <input type="password" name="password" class="uk-form-width-medium">
+            <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
+          </div>
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-password">
+            <label for="password">Confirm Password *</label>
+            <input type="password" name="password" class="uk-form-width-medium">
+            <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
+          </div>
+        </div>
+        <div class="uk-form-row">
+          <label for="email">Email *</label>
+          <input type="text" name="email" class="uk-form-width-medium">
+        </div>
+        <div class="uk-form-row">
+          <label for="first_name">First Name *</label>
+          <input type="text" name="first_name" class="uk-form-width-medium">
+        </div>
+        <div class="uk-form-row">
+          <label for="last_name">Last Name *</label>
+          <input type="text" name="last_name" class="uk-form-width-medium">
+        </div>
+        <div class="uk-form-row">
+          <label for="phone_number">Phone Number</label>
+          <input type="text" name="phone_number" class="uk-form-width-medium">
+        </div>
+        <span>* indicates a required field</span>
+        <button type="button" class="uk-button uk-button-primary"><i class="fa fa-user"></i> Register</button>
+      </form>
+    </div>
     <?php include "../views/partials/footer.php" ?>
     <?php include "js/js_include.php" ?>
   </body>
