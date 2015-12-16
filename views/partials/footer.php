@@ -36,3 +36,4 @@
                 <a href="#" class="uk-icon-button uk-icon-linkedin"></a>
             </div>
         </div>
+    </div>
