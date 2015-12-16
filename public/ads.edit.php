@@ -12,16 +12,18 @@
     </head>
     <body>
         <?php include '../views/partials/navbar.php' ?>
-        <div class="uk-grid">
-            <div class="uk-width-1-1">
-                <ul class="uk-breadcrumb">
-                    <li><a href="ads.create.php">Create Ad</a></li>
-                    <li class="uk-active">Edit Ad</li>
-                </ul>
+        <div class="uk-container-center uk-container">
+            <div class="uk-grid">
+                <div class="uk-width-1-1">
+                    <ul class="uk-breadcrumb">
+                        <li><a href="ads.create.php">Create Ad</a></li>
+                        <li class="uk-active">Edit Ad</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-        
+        <hr class="uk-grid-divider">
+
         <?php include '../views/partials/footer.php' ?>
         <?php include 'js/js_include.php' ?>
         <script src="js/main.js"></script>
