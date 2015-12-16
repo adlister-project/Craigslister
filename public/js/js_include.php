@@ -14,8 +14,8 @@
 <script src="js/components/search.min.js"></script>
 <script src="js/components/slider.min.js"></script>
 <script src="js/components/slideset.min.js"></script>
-<script src="js/components/slideshow-fx.min.js"></script>
 <script src="js/components/slideshow.min.js"></script>
+<script src="js/components/slideshow-fx.min.js"></script>
 <script src="js/components/sortable.min.js"></script>
 <script src="js/components/sticky.min.js"></script>
 <script src="js/components/timepicker.min.js"></script>
