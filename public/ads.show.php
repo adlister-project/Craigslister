@@ -1,3 +1,29 @@
+<?php
+
+require '../bootstrap.php';
+
+
+function pageController($dbc)
+{
+  $test = new Ad();
+  $keyword = new Keyword();
+  $ad = $test->find(2);
+  $adAttr = $ad->getAttributes();
+  'SELECT * FROM ads LEFT JOIN ad_keyword LEFT JOIN keywords WHERE id = ' . ':ad'
+  $keywordAttr = $keyword->getAttributes();
+  // foreach($ad as $a){
+    var_dump($keywordAttr);
+  // }
+
+  return array (
+    'adAttr' => $adAttr,
+    'keywordAttr' => $keywordAttr
+  );
+}
+
+extract(pageController($dbc));
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,12 +56,14 @@
           </tr>
         </thead>
         <tbody>
+          
           <tr>
-            <td>Some Description</td>
+            <td><?= $adAttr['description'] ?></td>
             <td>Some Date</td>
             <td>Some Keyword</td>
-            <td>Some Price</td>
+            <td><?= $adAttr['price'] ?></td>
           </tr>
+
         </tbody>
       </table>
     </div>
