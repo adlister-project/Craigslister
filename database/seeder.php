@@ -1,7 +1,6 @@
 <?php
 
-require '../.env.php';
-require 'db_connect.php';
+require_once '../bootstrap.php';
 
 
 $users = 'TRUNCATE users';

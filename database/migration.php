@@ -1,10 +1,16 @@
 <?php
 
-require '../.env.php';
-require 'db_connect.php';
+require_once '../bootstrap.php';
 
 
 $dbc->exec('DROP TABLE IF EXISTS users');
+$dbc->exec('DROP TABLE IF EXISTS ads');
+$dbc->exec('DROP TABLE IF EXISTS keywords');
+$dbc->exec('DROP TABLE IF EXISTS ad_keyword');
+$dbc->exec('DROP TABLE IF EXISTS images');
+$dbc->exec('DROP TABLE IF EXISTS ad_image');
+$dbc->exec('DROP TABLE IF EXISTS phone_carriers');
+
 
 $users = 'CREATE TABLE users(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -24,8 +30,6 @@ $users = 'CREATE TABLE users(
 $dbc->exec($users);
 
 
-$dbc->exec('DROP TABLE IF EXISTS ads');
-
 $ads = 'CREATE TABLE ads(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	title VARCHAR(255) NOT NULL,
@@ -37,8 +41,6 @@ $ads = 'CREATE TABLE ads(
 $dbc->exec($ads);
 
 
-$dbc->exec('DROP TABLE IF EXISTS keywords');
-
 $keywords = 'CREATE TABLE keywords(
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   keyword VARCHAR(30) NOT NULL,
@@ -47,8 +49,6 @@ $keywords = 'CREATE TABLE keywords(
 
 $dbc->exec($keywords);
 
-
-$dbc->exec('DROP TABLE IF EXISTS ad_keyword');
 
 $ad_keyword = 'CREATE TABLE ad_keyword(
   ad_id INT UNSIGNED,
@@ -61,8 +61,6 @@ $ad_keyword = 'CREATE TABLE ad_keyword(
 $dbc->exec($ad_keyword);
 
 
-$dbc->exec('DROP TABLE IF EXISTS images');
-
 $images = 'CREATE TABLE images(
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   image_url VARCHAR(255) UNIQUE,
@@ -72,8 +70,6 @@ $images = 'CREATE TABLE images(
 $dbc->exec($images);
 
 
-$dbc->exec('DROP TABLE IF EXISTS ad_image');
-
 $ad_image = 'CREATE TABLE ad_image(
   ad_id INT UNSIGNED,
   image_id INT UNSIGNED,
@@ -82,15 +78,13 @@ $ad_image = 'CREATE TABLE ad_image(
   FOREIGN KEY (image_id) REFERENCES images(id)
 )';
 
-$dbc->exec($ad_image)
+$dbc->exec($ad_image);
 
-
-$dbc->exec('DROP TABLE IF EXISTS phone_carriers');
 
 $phone_carriers = 'CREATE TABLE phone_carriers(
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   carrier_domain VARCHAR(100),
   PRIMARY KEY (id)
-)'
+)';
 
 $dbc->exec($phone_carriers);
