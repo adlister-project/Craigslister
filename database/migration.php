@@ -3,6 +3,7 @@
 require_once '../bootstrap.php';
 
 
+$dbc->exec('SET foreign_key_checks = 0');
 $dbc->exec('DROP TABLE IF EXISTS users');
 $dbc->exec('DROP TABLE IF EXISTS ads');
 $dbc->exec('DROP TABLE IF EXISTS keywords');
@@ -10,32 +11,31 @@ $dbc->exec('DROP TABLE IF EXISTS ad_keyword');
 $dbc->exec('DROP TABLE IF EXISTS images');
 $dbc->exec('DROP TABLE IF EXISTS ad_image');
 $dbc->exec('DROP TABLE IF EXISTS phone_carriers');
+$dbc->exec('SET foreign_key_checks = 1');
 
 
 $users = 'CREATE TABLE users(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  ad_id INT UNSIGNED,
-  phone_carrier_id INT UNSIGNED,
 	email VARCHAR(255) NOT NULL UNIQUE,
   username VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
 	first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
 	phone VARCHAR(25),
-	PRIMARY KEY (id),
-  FOREIGN KEY (ad_id) REFERENCES ads(id),
-  FOREIGN KEY (phone_carrier_id) REFERENCES phone_carriers(id)
+	PRIMARY KEY (id)
 )';
 
 $dbc->exec($users);
 
 
 $ads = 'CREATE TABLE ads(
-	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	title VARCHAR(255) NOT NULL,
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT UNSIGNED,
+  title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   price DECIMAL(10, 2) NOT NULL,
-	PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 )';
 
 $dbc->exec($ads);
@@ -83,8 +83,10 @@ $dbc->exec($ad_image);
 
 $phone_carriers = 'CREATE TABLE phone_carriers(
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT UNSIGNED,
   carrier_domain VARCHAR(100),
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
 )';
 
 $dbc->exec($phone_carriers);
