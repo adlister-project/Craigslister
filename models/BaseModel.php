@@ -12,11 +12,11 @@ class Model
         self::dbConnect();
     }
 
-    private static function dbConnect()
+    protected static function dbConnect()
     {
         if (!self::$dbc)
         {
-            require '../database/db_connect.php';
+            require __DIR__ . '/../database/db_connect.php';
             self::$dbc = $dbc;
         }
     }
