@@ -27,14 +27,14 @@
         <div class="uk-form-row">
           <div class="uk-form-password">
             <label for="password">Password *</label>
-            <input type="password" name="password" minlength="10" class="uk-form-width-medium" id="password" required>
+            <input type="password" name="password" minlength="10" class="uk-form-width-medium" id="passwordInput" required>
             <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
           </div>
         </div>
         <div class="uk-form-row">
           <div class="uk-form-password">
             <label for="password">Confirm Password *</label>
-            <input type="password" name="confirm_password" minlength="10" class="uk-form-width-medium" id="passwordConfirm" required>
+            <input type="password" name="confirm_password" minlength="10" class="uk-form-width-medium" id="confirm_password" required>
             <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
           </div>
         </div>
@@ -55,73 +55,75 @@
           <input type="text" name="phone_number" Minlength="10" class="uk-form-width-medium" id="phone_number">
         </div>
         <span>* indicates a required field</span>
-        <button type="button" class="uk-button uk-button-primary"><i class="fa fa-user"></i> Register</button>
+        <button type="submit" class="uk-button uk-button-primary" id="submit-button"><i class="fa fa-user"></i> Register</button>
       </form>
     </div>
     <?php include "../views/partials/footer.php" ?>
     <?php include "js/js_include.php" ?>
     <script>
     $(document).ready(function() {
-      $("button").on("click", function() {
+      var form_validate_rules = {
+          rules: {
+            username: {
+              required: true,
+              minlength: 2
+            },
+            passwordInput: {
+              required: true,
+              minlength: 10
+            },
+            confirm_password: {
+              required: true,
+              minlength: 10,
+              equalto: "#passwordInput"
+            },
+            email: {
+              required: true,
+              email: true
+            },
+            first_name: {
+              required: true,
+              minlength: 2
+            },
+            last_name: {
+              required: true,
+              minlength: 2
+            },
+            phone_number: {
+              minlength: 10
+            }, 
+          },
+          messages: {
+            username: {
+              required: "Please enter a username",
+              minlength: "Your username must consist of at least 2 characters"
+            },
+            password: {
+              required: "Please provide a password",
+              minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character"
+            },
+            confirm_password: {
+              required: "Please provide a password",
+              minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character",
+              equalTo: "Please enter the same password as above" 
+            },
+            first_name: {
+              required: "Please enter your first name",
+              minlength: 2
+            },
+            last_name: {
+              required: "Please enter your last name",
+              minlength: 2
+            },     
+          }
+        };
 
-      }
-      
-      $("#register").validate({
-        rules: {
-          username: {
-            required: true,
-            minlength: 2
-          },
-          password: {
-            required: true,
-            minlength: 10
-          },
-          confirm_password: {
-            required: true,
-            minlength: 10,
-            equalto: "#password"
-          },
-          email: {
-            required: true,
-            email: true
-          },
-          first_name: {
-            required: true,
-            minlength: 2
-          },
-          last_name: {
-            required: true,
-            minlength: 2
-          },
-          phone_number: {
-            minlength: 10
-          }, 
-        },
-        messages: {
-          username: {
-            required: "Please enter a username",
-            minlength: "Your username must consist of at least 2 characters"
-          },
-          password: {
-            required: "Please provide a password",
-            minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character"
-          },
-          confirm_password: {
-            required: "Please provide a password",
-            minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character",
-            equalTo: "Please enter the same password as above" 
-          },
-          first_name: {
-            required: "Please enter your first name",
-            minlength: 2
-          },
-          last_name: {
-            required: "Please enter your last name",
-            minlength: 2
-          },     
-        }
+      $("#register").validate(form_validate_rules);
+
+      $("#submit-button").on("click", function() {
+        $("#register").validate(form_validate_rules);
+        alert('YO!');
       });
-
     });
     </script>
   </body>
