@@ -6,9 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Craigslister</title>
         <link rel="stylesheet" href="css/uikit.almost-flat.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
         <script src="js/uikit.min.js"></script>
         <link rel="stylesheet" href="css/main.css">
+        <style type="text/css">
+            .currencyinput{border: 1px inset #ccc;}
+        </style>
     </head>
     <body>
         <?php include '../views/partials/navbar.php' ?>
@@ -27,9 +32,9 @@
                 </div>
                 <div class="uk-grid" >
                     <div class="uk-width-1-1">
-                        <form class="uk-form uk-form-stacked" method='POST'>
-                            <legend>Fill out title, description, keywords, and upload a picture</legend>
+                        <form class="uk-form uk-form-stacked" method='POST' id='ad-create'>
                             <fieldset data-uk-grid-margin>
+                            <legend>Fill out title, description, keywords, and upload a picture</legend>
                                 <div class="uk-form-rom">
                                     <label class="uk-form-label" for="title">Ad Title</label>
                                     <input class="uk-form-width-large" type='text' placeholder='Title' id="title" name="adTitle">
@@ -40,7 +45,8 @@
                                 </div>
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="Price">Price</label>
-                                    <input type='number' placeholder='Price' name="price" id="price" min="0.01" step="0.01" max="99999999.99">
+                                    <i class="fa fa-usd"></i>
+                                    <input class="uk-form-width-small" type='number' placeholder='Price' name="price" id="price" min="0.01" step="0.01" max="99999999.99">
                                 </div>                                
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="keyword_1">Ad Keyword 1</label>
@@ -54,15 +60,15 @@
                                     <label class="uk-form-label" for="keyword_3">Ad Keyword 3</label>
                                     <input type='text' placeholder='Keyword #3' name="keyword_3" id="keyword_3">
                                 </div>
-                                <div class="uk-form-row">
-                                    Upload a Picture
+                                <div class="uk-form-row uk-form-horizontal">
+                                    Upload Picture <i class="uk-icon-image"></i>
                                     <div class="uk-form-file uk-text-primary">
                                         <input type="file">
-                                    </div>
+                                    </div>                                    
                                 </div>
                                 <div class="uk-form-row uk-form-horizontal">
-                                    <button type="submit" class="uk-button uk-button-primary">Submit</button>
-                                    <button type="reset" class="uk-button uk-button-danger">Reset</button>
+                                    <button type="submit" class="uk-button uk-button-primary"><i class="uk-icon-check"></i> Submit</button>
+                                    <button type="reset" class="uk-button uk-button-danger"><i class="uk-icon-remove"></i> Reset</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -73,5 +79,27 @@
         <?php include '../views/partials/footer.php' ?>
         <?php include 'js/js_include.php' ?>
         <script src="js/main.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#title').on('input', function(){
+                    var input = $(this);
+                    var isName = input.val();
+                    if(isName) {
+                        input.removeClass('uk-form-danger').addClass('uk-form-success');
+                    } else {
+                        input.addClass('uk-form-danger').removeClass('uk-form-success');
+                    }
+                });
+                $('#description').keyup(function (event){
+                    var input = $(this);
+                    var description = input.val();
+                    if(description) {
+                        description.removeClass('uk-form-danger').addClass('uk-form-success');                        
+                    } else {
+                        description.addClass('uk-form-danger').removeClass('uk-form-success');
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
