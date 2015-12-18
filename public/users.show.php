@@ -15,7 +15,7 @@
     <?php include "../views/partials/navbar.php" ?>
     <?php include "../views/partials/header.php" ?>
     <div class="uk-container side">
-      <img src="http://placehold.it/200x200" alt="Profile Picture" />
+      <img class="uk-border-circle" src="http://placehold.it/200x200" alt="Profile Picture" />
       <h2>First and Last Name</h2>
       <h4>Email:</h4>
       <h4>Phone:</h4>
