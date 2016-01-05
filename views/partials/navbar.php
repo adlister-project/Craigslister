@@ -12,14 +12,14 @@
         <ul class="uk-navbar-nav">
             <?php if(Auth::check()): ?> 
             <li class="">
-                <a href="users.show.php">User Profile</a>
+                <a href="users.show.php"><?= ucfirst($_SESSION['LOGGED_IN_USER']['username']) . '\'s' ?> Profile</a>
             </li>
             <li class="">
-                <a <?php Auth::logout() ?> href="index.html">Logout</a>
+                <a href="auth.logout.php">Logout</a>
             </li>
             <?php else: ?>
             <li class="">
-                <a href="users.show.php">Sign Up</a>
+                <a href="users.create.php">Sign Up</a>
             </li>
             <li class="">
                 <a href="auth.login.php">Login</a>

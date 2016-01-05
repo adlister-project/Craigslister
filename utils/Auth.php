@@ -10,7 +10,11 @@ class Auth
     	
     	if($user = $user->findUserByUsername($username)){
 			if(password_verify($password, $user->password)){
-				$_SESSION['LOGGED_IN_USER'] = $user->username;
+				$_SESSION['LOGGED_IN_USER'] = array(
+				'username' => $user->username,
+				'email' => $user->email,
+				'firstname' => $user->first_name,
+				'lastname' => $user->last_name);
 				// $log->info("User {$username} logged in.");
 				return true;
 			}
@@ -21,7 +25,7 @@ class Auth
 
 	public static function check()
 	{
-		return isset($_REQUEST['LOGGED_IN_USER']) ? true : false;
+		return isset($_SESSION['LOGGED_IN_USER']) ? true : false;
 	}
 
 	public static function user()
