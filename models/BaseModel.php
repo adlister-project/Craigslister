@@ -46,6 +46,14 @@ class Model
     }
 
     /*
+     * Get table name
+     */
+    public static function getTableName()
+    {
+        return (!empty(static::$table)) ? static::$table : NULL;
+    }
+
+    /*
      * Run update on table
      */
     public function update($id)

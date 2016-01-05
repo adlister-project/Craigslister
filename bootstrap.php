@@ -1,6 +1,8 @@
 <?php
 
 // session_start();
+// $sessionId = session_id();
+// $isLoggedIn = false;
 
 $_ENV = require '.env.php';
 
