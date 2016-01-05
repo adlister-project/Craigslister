@@ -46,7 +46,8 @@ $users = [
 $ads = [
     ['user_id' => '1', 'category_id' => '1', 'title' => 'Marilyn Monroe\'s "Happy Birthday Mr. President" Dress', 'description' => 'When Marilyn Monroe delivered a sultry "Happy Birthday" serenade to President John F. Kennedy on May 19, 1962, the blonde bombshell wore a flesh-colored, curve-hugging, jewel-encrusted dress so tight and sheer that, according to legend, Monroe was sewn into the gown and wore nothing under it.',                  'price' => '1267500',  'date_posted' => '1999-12-01'],
     ['user_id' => '2', 'category_id' => '2', 'title' => 'Leonardo da Vinci\'s Codex Hammer',                      'description' => 'As the ultimate Renaissance man, Leonardo da Vinci meticulously recorded his thoughts, musings and sketches in journals throughout his life. Of the 30 that remain, his most famous is the Codex Hammer, named for the British nobleman who acquired the 72-page journal in 1717.',                                      'price' => '30802500', 'date_posted' => '2008-04-23'],
-    ['user_id' => '3', 'category_id' => '3', 'title' => '1957 Ferrari 250 Testa Rossa',                           'description' => 'There are only 21 other cars like it, but none of them are quite so expensive. While the 1957 Testa Rossas won 10 of the 19 international races that they entered from 1958 and 1961, this particular vehicle never finished better than fourth. No matter; the car\'s finest quality is not its speed but its beauty.', 'price' => '12200000', 'date_posted' => '1969-07-07']
+    ['user_id' => '3', 'category_id' => '3', 'title' => '1957 Ferrari 250 Testa Rossa',                           'description' => 'There are only 21 other cars like it, but none of them are quite so expensive. While the 1957 Testa Rossas won 10 of the 19 international races that they entered from 1958 and 1961, this particular vehicle never finished better than fourth. No matter; the car\'s finest quality is not its speed but its beauty.', 'price' => '12200000', 'date_posted' => '1969-07-07'],
+    ['user_id' => '1', 'category_id' => '1', 'title' => 'Hi', 'description' => 'Hi', 'price' => '5000', 'date_posted' => '2007-09-18']
 ];
 
 $keywords = [
@@ -70,7 +71,8 @@ $images = [
 $ad_image = [
     ['ad_id' => '2', 'image_id' => '1'],
     ['ad_id' => '2', 'image_id' => '2'],
-    ['ad_id' => '3', 'image_id' => '3']
+    ['ad_id' => '3', 'image_id' => '3'],
+    ['ad_id' => '4', 'image_id' => '1']
 ];
 
 

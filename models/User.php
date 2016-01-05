@@ -13,6 +13,7 @@ class User extends Model
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
+        
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $instance = null;
