@@ -15,11 +15,7 @@ class Auth
 				return true;
 			}
 			// $log->error("User {$username} failed to log in!");
-			self::logout();
 			return false;
-    	} else {
-    		self::logout();
-    		return false;
     	}
 	}
 
