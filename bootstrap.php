@@ -1,11 +1,10 @@
 <?php
 
-$_ENV = array(
-  'DB_HOST' => '127.0.0.1',
-  'DB_NAME' => 'adlister_db',
-  'DB_USER' => 'adlister_admin',
-  'DB_PASS' => 'password'
-);
+// session_start();
+// $sessionId = session_id();
+// $isLoggedIn = false;
+
+$_ENV = require '.env.php';
 
 require 'database/db_connect.php';
 require_once 'models/BaseModel.php';

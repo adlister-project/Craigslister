@@ -4,13 +4,21 @@ require '../bootstrap.php';
 
 function pageController($dbc)
 {
-    $test = new Ad();
+    if(isset($_GET['ad-id'])) {
+        $oneAd = Ad::adWithAllFields($_GET['ad-id']);
+    } else {
+        header("Location: ads.index.php");
+        die();
+    }
 
-    $ad = Ad::adWithAllFields(2);
-    $adAttr = $ad->getAttributes();
-    $adAttr['keywords'] = implode(', ', $adAttr['keywords']);
+    $ad = $oneAd->getAttributes();
+    
+    $ad['keywords'] = implode(', ', $ad['keywords']);
+    $ad['price'] = '$' . number_format($ad['price'], 2, '.', ',');
+    $ad['date_posted'] = new DateTime($ad['date_posted']);
+    $ad['date_posted'] = $ad['date_posted']->format('m-d-Y');
 
-    var_dump($adAttr);
+    var_dump($ad);
 
     if(Auth::check()) {
         $username = Auth::user();
@@ -19,7 +27,7 @@ function pageController($dbc)
 
 
     return array (
-        'adAttr' => $adAttr
+        'ad' => $ad
     );
 }
 
@@ -30,7 +38,7 @@ extract(pageController($dbc));
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Show</title>
+        <title><?= $ad['title'] ?></title>
         <link rel="shortcut icon" href="img/icon.png">
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
         <link rel="stylesheet" href="css/uikit.almost-flat.min.css" media="screen">
@@ -44,11 +52,11 @@ extract(pageController($dbc));
         <?php include "../views/partials/navbar.php" ?>
         <?php include "../views/partials/header.php" ?>
         <div class="uk-container uk-container-center">
-            <h2><?= $adAttr['title'] ?></h2>
-            <h6>Seller: <div class="uk-badge"><i class="uk-icon-user"></i>&nbsp; <?= $adAttr['username'] ?></div></h6>
-            <?php if(!empty($adAttr['image_urls'])): ?>
-                <?php foreach($adAttr['image_urls'] as $adImage): ?>
-            <img class="uk-thumbnail-mini" src="<?= $adImage ?>" alt="Item Picture" />
+            <h2><?= $ad['title'] ?></h2>
+            <h6>Seller: <a href="users.show.php"><div class="uk-badge"><i class="uk-icon-user"></i>&nbsp; <?= $ad['username'] ?></div></a></h6>
+            <?php if(!empty($ad['image_urls'])): ?>
+                <?php foreach($ad['image_urls'] as $adImage): ?>
+            <img class="uk-thumbnail-mini" src="<?= $adImage ?>" alt="<?= $ad['title'] ?>" />
                 <?php endforeach ?>
             <?php endif ?>
             <table class="uk-table">
@@ -62,10 +70,10 @@ extract(pageController($dbc));
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?= $adAttr['description'] ?></td>
-                        <td><?= $adAttr['date_posted'] ?></td>
-                        <td><?= $adAttr['keywords'] ?></td>
-                        <td><?= '$' . $adAttr['price'] ?></td>
+                        <td><?= $ad['description'] ?></td>
+                        <td><?= $ad['date_posted'] ?></td>
+                        <td><?= $ad['keywords'] ?></td>
+                        <td><?= $ad['price'] ?></td>
                     </tr>
                 </tbody>
             </table>
