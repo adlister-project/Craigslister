@@ -18,7 +18,6 @@
   </head>
   <body>
     <?php include "../views/partials/navbar.php" ?>
-    <?php include "../views/partials/header.php" ?>
     <div class="uk-vertical-align uk-panel-box-primary">
       <form action='ads.index.php' method="POST" class="uk-form uk-container uk-vertical-align-middle">
         <div class="uk-form-row">

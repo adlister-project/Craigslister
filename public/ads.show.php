@@ -18,13 +18,7 @@ function pageController($dbc)
     $ad['date_posted'] = new DateTime($ad['date_posted']);
     $ad['date_posted'] = $ad['date_posted']->format('m-d-Y');
 
-    var_dump($ad);
-
-    if(Auth::check()) {
-        $username = Auth::user();
-        var_dump($user);
-    }
-
+    // var_dump($ad);
 
     return array (
         'ad' => $ad
@@ -50,7 +44,6 @@ extract(pageController($dbc));
     </head>
     <body>
         <?php include "../views/partials/navbar.php" ?>
-        <?php include "../views/partials/header.php" ?>
         <div class="uk-container uk-container-center">
             <h2><?= $ad['title'] ?></h2>
             <h6>Seller: <a href="users.show.php"><div class="uk-badge"><i class="uk-icon-user"></i>&nbsp; <?= $ad['username'] ?></div></a></h6>

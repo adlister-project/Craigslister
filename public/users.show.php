@@ -20,8 +20,8 @@ var_dump($_SESSION);
     <?php include "../views/partials/header.php" ?>
     <div class="uk-container side">
       <img class="uk-border-circle" src="http://placehold.it/200x200" alt="Profile Picture" />
-      <h2>First and Last Name</h2>
-      <h4>Email:</h4>
+      <h2><?= $_SESSION['LOGGED_IN_USER']['firstname'] . ' ' . $_SESSION['LOGGED_IN_USER']['lastname'] ?></h2>
+      <h4>Email: <?= $_SESSION['LOGGED_IN_USER']['email'] ?></h4>
       <h4>Phone:</h4>
     </div>
     <div class="uk-container main">

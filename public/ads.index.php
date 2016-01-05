@@ -15,7 +15,7 @@ function pageController($dbc)
     foreach ($categoryResults as $category) {
         $categories[] = $category['category'];
     }
-    var_dump($categories);
+    // var_dump($categories);
 
     
     if(isset($_GET['cat'])) {
@@ -27,7 +27,7 @@ function pageController($dbc)
     foreach($ads as $key => $ad) {
         $ads[$key]['price'] = '$' . number_format($ad['price'], 2, '.', ',');
     }
-    var_dump($ads);
+    // var_dump($ads);
 
     return array (
         'ads' => $ads,
@@ -64,11 +64,15 @@ extract(pageController($dbc));
         <div class="uk-grid">
             <div class="uk-panel uk-panel-box uk-width-1-10 uk-container sidebar">
                 <h3 class="uk-panel-title">Categories</h3>
-                <?php foreach($categories as $category): ?>
                 <ul>
+                <?php if(!empty($_GET)): ?>
+                    <li><a href="ads.index.php">All</a></li>
+                <?php endif ?>
+
+                <?php foreach($categories as $category): ?>
                     <li><a href="?cat=<?= strtolower($category) ?>"><?= $category ?></a></li>
-                </ul>
                 <?php endforeach ?>
+                </ul>
             </div>
             <div class="uk-panel uk-panel-box uk-width-8-10 uk-container-center uk-text-center">
                 
@@ -88,7 +92,6 @@ extract(pageController($dbc));
                                     <?php endforeach ?>
                                     </ul>
                                     <?= $ad['price'] ?>
-                                    <?php var_dump(count($ad['image_urls'])) ?>
                                     <?php if(count($ad['image_urls']) > 1): ?>
                                     <a href="" class="uk-slidenav uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
                                     <a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>
