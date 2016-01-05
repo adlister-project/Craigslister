@@ -2,4 +2,4 @@
 require_once 'bootstrap.php';
 
 
-var_dump(Ad::allAds());
+var_dump(Ad::getAllCategories());

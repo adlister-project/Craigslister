@@ -1,0 +1,4 @@
+textarea {
+  /* user can resize vertically, but width is fixed */
+  resize: vertical; 
+}
