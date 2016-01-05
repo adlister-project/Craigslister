@@ -1,5 +1,5 @@
 <nav class="uk-navbar uk-margin-large-bottom">
-    <a class="uk-navbar-brand uk-hidden-small" href="index.php">Caigs'Lists</a>
+    <a class="uk-navbar-brand uk-hidden-small" href="index.php">Craigs'Lists</a>
     <ul class="uk-navbar-nav uk-hidden-small">
         <li class="">
             <a href="ads.index.php">View Ads</a>
@@ -10,12 +10,21 @@
     </ul>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
+            <?php if(Auth::check()): ?> 
             <li class="">
-                <a href="users.create.php">Sign Up</a>
+                <a href="users.show.php">User Profile</a>
+            </li>
+            <li class="">
+                <a <?php Auth::logout() ?> href="index.html">Logout</a>
+            </li>
+            <?php else: ?>
+            <li class="">
+                <a href="users.show.php">Sign Up</a>
             </li>
             <li class="">
                 <a href="auth.login.php">Login</a>
             </li>
+            <?php endif ?>
         </ul>
     </div>
 

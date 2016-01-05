@@ -1,3 +1,7 @@
+<?php 
+require '../bootstrap.php';
+var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,7 +9,7 @@
     <title>Profile</title>
     <link rel="shortcut icon" href="img/icon.png">
     <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-    <link rel="stylesheet" href="css/uikit.almost-flat.min.css" media="screen">
+    <link rel="stylesheet" khref="css/uikit.almost-flat.min.css" media="screen">
     <link rel="stylesheet" href="css/main.css" media="screen">
     <link rel="stylesheet" href="css/show.css" media="screen">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>

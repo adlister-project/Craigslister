@@ -2,7 +2,6 @@
 
 require '../bootstrap.php';
 
-
 function pageController($dbc)
 {
     $test = new Ad();
@@ -12,6 +11,12 @@ function pageController($dbc)
     $adAttr['keywords'] = implode(', ', $adAttr['keywords']);
 
     var_dump($adAttr);
+
+    if(Auth::check()) {
+        $username = Auth::user();
+        var_dump($user);
+    }
+
 
     return array (
         'adAttr' => $adAttr

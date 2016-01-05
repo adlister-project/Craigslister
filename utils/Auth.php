@@ -2,23 +2,30 @@
 
 class Auth
 {
+
 	public static function attempt($username, $password)
 	{
-		$log = new Log();
-    	$user = User::findUserByUsername($username);
+		// $log = new Log();
+		$user = new User();
     	
-		if($username == $user->username && password_verify($password, $user->password)){
-			$_SESSION['LOGGED_IN_USER'] = $username;
-			$log->info("User {$username} logged in.");
-			return true;
-		}
-		$log->error("User {$username} failed to log in!");
-		return false;
+    	if($user = $user->findUserByUsername($username)){
+			if(password_verify($password, $user->password)){
+				$_SESSION['LOGGED_IN_USER'] = $user->username;
+				// $log->info("User {$username} logged in.");
+				return true;
+			}
+			// $log->error("User {$username} failed to log in!");
+			self::logout();
+			return false;
+    	} else {
+    		self::logout();
+    		return false;
+    	}
 	}
 
 	public static function check()
 	{
-		return isset($_SESSION['LOGGED_IN_USER']) ? true : false;
+		return isset($_REQUEST['LOGGED_IN_USER']) ? true : false;
 	}
 
 	public static function user()
