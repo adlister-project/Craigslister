@@ -2,6 +2,11 @@
 
 require '../bootstrap.php';
 
+if(isset($_REQUEST['username']) && isset($_REQUEST['password'])) {
+    if(Auth::attempt($_REQUEST['username'], $_REQUEST['password'])){
+        var_dump($_SESSION);
+    }
+}
 
 function pageController($dbc)
 {

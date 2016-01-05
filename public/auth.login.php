@@ -1,3 +1,7 @@
+<?php
+  require '../bootstrap.php';
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +20,7 @@
     <?php include "../views/partials/navbar.php" ?>
     <?php include "../views/partials/header.php" ?>
     <div class="uk-vertical-align uk-panel-box-primary">
-      <form action="index.php" method="post" class="uk-form uk-container uk-vertical-align-middle">
+      <form action='ads.index.php' method="POST" class="uk-form uk-container uk-vertical-align-middle">
         <div class="uk-form-row">
           <label for="username">Username</label>
           <input type="text" name="username" class="uk-form-width-medium">
@@ -27,10 +31,12 @@
           <a href="" class="uk-form-password-toggle" data-uk-form-password="">Show</a>
         </div>
         <span><a href="#">Forgot your password?</a></span>
-        <button type="button" class="uk-button uk-button-primary"><i class="fa fa-user"></i> Login</button>
+        <button type="submit" class="uk-button uk-button-primary"><i class="fa fa-user"></i> Login</button>
       </form>
     </div>
     <?php include "../views/partials/footer.php" ?>
     <?php include "js/js_include.php" ?>
+    <script>
+    </script>
   </body>
 </html>

@@ -34,7 +34,6 @@ function pageController($dbc)
 
 extract(pageController($dbc));
 
-
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,3 +1,19 @@
+<?php
+require '../bootstrap.php';
+function pageController($dbc) 
+{
+  $errors = [];
+  if(!empty($_POST)) {
+    
+  }
+
+  return array (
+    'errors' => $errors
+  );
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

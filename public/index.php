@@ -1,3 +1,8 @@
+<?php
+    require '../bootstrap.php';
+
+    var_dump($_REQUEST);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,8 +16,8 @@
         <link rel="stylesheet" href="css/main.css">
         <style type="text/css">
             #back-cover {background-image: url('img/couch_sale.jpg');} 
-            .text-white{color: white;}
-            .text-blue{color: blue;}
+            .text-white {color: white;}
+            .text-blue  {color: blue;}
         </style>
     </head>
     <body>

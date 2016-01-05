@@ -2,7 +2,6 @@
 
 require '../bootstrap.php';
 
-
 function pageController($dbc)
 {
     if(isset($_GET['ad-id'])) {
@@ -20,6 +19,12 @@ function pageController($dbc)
     $ad['date_posted'] = $ad['date_posted']->format('m-d-Y');
 
     var_dump($ad);
+
+    if(Auth::check()) {
+        $username = Auth::user();
+        var_dump($user);
+    }
+
 
     return array (
         'ad' => $ad
