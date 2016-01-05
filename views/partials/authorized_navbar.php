@@ -1,5 +1,5 @@
 <nav class="uk-navbar uk-margin-large-bottom">
-    <a class="uk-navbar-brand uk-hidden-small" href="index.php">Caigs'Lists</a>
+    <a class="uk-navbar-brand uk-hidden-small" href="index.php">Craigs'Lists</a>
     <ul class="uk-navbar-nav uk-hidden-small">
         <li class="">
             <a href="ads.index.php">View Ads</a>

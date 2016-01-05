@@ -77,13 +77,10 @@ function pageController($dbc)
     <?php include "../views/partials/footer.php" ?>
     <?php include "js/js_include.php" ?>
     <script>
-    $(document).ready(function() {
+      $(document).ready(function() {
+      
 
-      // $.validator.setDefaults({
-      //   debug: true
-      // });
-
-      $("#register").validate({
+      var validate_form_rules = {
         rules: {
           username: {
             required: true,
@@ -100,6 +97,7 @@ function pageController($dbc)
           },
           email: {
             required: true,
+            minlength: 7,
             email: true
           },
           first_name: {
@@ -128,6 +126,10 @@ function pageController($dbc)
             minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character",
             equalTo: "Please enter the same password as above" 
           },
+          email: {
+            required: "Please enter a valid email address",
+            minlength: 7
+          },
           first_name: {
             required: "Please enter your first name",
             minlength: 2
@@ -135,69 +137,15 @@ function pageController($dbc)
           last_name: {
             required: "Please enter your last name",
             minlength: 2
-          },     
+          }     
         }
-      });
-      
-      // var validate_form_rules = {
-      //     rules: {
-      //       username: {
-      //         required: true,
-      //         minlength: 2
-      //       },
-      //       password: {
-      //         required: true,
-      //         minlength: 10
-      //       },
-      //       confirm_password: {
-      //         required: true,
-      //         minlength: 10,
-      //         equalTo: "#password"
-      //       },
-      //       email: {
-      //         required: true,
-      //         email: true
-      //       },
-      //       first_name: {
-      //         required: true,
-      //         minlength: 2
-      //       },
-      //       last_name: {
-      //         required: true,
-      //         minlength: 2
-      //       },
-      //       phone_number: {
-      //         minlength: 10
-      //       }, 
-      //     },
-      //     messages: {
-      //       username: {
-      //         required: "Please enter a username",
-      //         minlength: "Your username must consist of at least 2 characters"
-      //       },
-      //       password: {
-      //         required: "Please provide a password",
-      //         minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character"
-      //       },
-      //       confirm_password: {
-      //         required: "Please provide a password",
-      //         minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character",
-      //         equalTo: "Please enter the same password as above" 
-      //       },
-      //       first_name: {
-      //         required: "Please enter your first name",
-      //         minlength: 2
-      //       },
-      //       last_name: {
-      //         required: "Please enter your last name",
-      //         minlength: 2
-      //       },     
-      //     }
-      //   }
+      };
+
+      $("#register").validate(validate_form_rules);
 
       $("#submit_button").on("click", function() {
-        $("#register").validate();
-        alert('YO!');
+        $("#register").validate(validate_form_rules);
+        alert('Please go back and fill out the fields correctly.');
       });
     });
     </script>
