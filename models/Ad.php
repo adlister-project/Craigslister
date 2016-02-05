@@ -138,42 +138,20 @@ class Ad extends Model
         return $instance;
 	}
 
-    public static function updateAllFields($id, $keyword)
+    public static function updateAds($id, $title, $description, $price)
     {
         self::dbConnect();
-        $query = 'SELECT ' . static::$table .'.*, username, keyword_id, keyword, category, image_id, image_url FROM ' .  static::$table . 
-            ' LEFT JOIN ' . User::getTableName() . ' ON users.id = ' . static::$table . '.user_id 
-            LEFT JOIN categories ON ' . static::$table . '.category_id = categories.id
-            LEFT JOIN ad_image ON ' . static::$table .'.id = ad_image.ad_id
-            LEFT JOIN images ON ad_image.image_id = images.id 
-            LEFT JOIN ad_keyword ON ' . static::$table . '.id = ad_keyword.ad_id 
-            LEFT JOIN ' . Keyword::getTableName() . ' ON ad_keyword.keyword_id = keywords.id 
-            UPDATE keywords.:keyword
+        $query = 'UPDATE ' . static::$table .
+            ' SET title = :title,
+            description = :description,
+            price = :price
             WHERE ' . static::$table . '.id = :id';
         $stmt = self::$dbc->prepare($query);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->bindValue(':keyword', $id, PDO::PARAM_STR);
+        $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+        $stmt->bindValue(':description', $description, PDO::PARAM_STR);
+        $stmt->bindValue(':price', $price, PDO::PARAM_STR);
         $stmt->execute();
-
-        while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
-            $results['id'] = $result['id'];
-            $results['username'] = $result['username'];
-            $results['title'] = $result['title'];
-            $results['description'] = $result['description'];
-            $results['price'] = $result['price'];
-            $results['date_posted'] = $result['date_posted'];
-            $results['category'] = $result['category'];
-            $results['keywords'][$result['keyword_id']] = $result['keyword'];
-            $results['image_urls'][$result['image_id']] = $result['image_url'];
-        }
-
-        $instance = null;
-        if ($results)
-        {
-            $instance = new static;
-            $instance->attributes = $results;
-        }
-        return $instance;
     }
 
 	public static function allWithKeywords()

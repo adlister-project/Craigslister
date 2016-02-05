@@ -13,8 +13,7 @@
     <script type="text/javascript" src="js/uikit.min.js"></script>
   </head>
   <body>
-    <?php include "../views/partials/navbar.php" ?>
-    <?php include "../views/partials/header.php" ?>
+   
     <div class="uk-container">
       <h1>Edit</h1>
       <div class="uk-accordion" data-uk-accordion>
@@ -126,7 +125,6 @@
       </div>
       <button type="button" name="button" class="uk-button uk-button-danger">Delete Account</button>
     </div>
-    <?php include "../views/partials/footer.php" ?>
     <?php include "js/js_include.php" ?>
   </body>
 </html>

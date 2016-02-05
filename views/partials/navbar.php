@@ -10,7 +10,7 @@
     </ul>
     <div class="uk-navbar-flip">
         <ul class="uk-navbar-nav">
-            <?php if(Auth::check()): ?> 
+           <?php if(Auth::check()): ?>
             <li class="">
                 <a href="users.show.php"><?= ucfirst($_SESSION['LOGGED_IN_USER']['username']) . '\'s' ?> Profile</a>
             </li>
