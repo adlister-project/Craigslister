@@ -1,16 +1,89 @@
 <?php
 require '../bootstrap.php';
+
 function pageController($dbc) 
 {
-  $errors = [];
-  if(!empty($_POST)) {
-    
-  }
+    var_dump($_POST);
+    $error = '';
+    $errors = NULL;
 
-  return array (
-    'errors' => $errors
-  );
+    if(!empty($_POST)){
+        if(checkValues()) {
+            $errors = insertPark($dbc);
+        } 
+    }
+
+    return array (
+        'errors' => $errors
+    );
 }
+
+extract(pageController($dbc));
+    
+
+function checkValues()
+{
+    return (Input::notEmpty('username') && Input::notEmpty('password') && Input::notEmpty('email') && Input::notEmpty('first_name') && Input::notEmpty('last_name') && Input::notEmpty('phone_number'));
+}
+
+function insertPark($dbc)
+{
+
+    $errors = [];
+
+    try{
+        $username = Input::getString('username');
+    } catch (Exception $e) {
+        array_push($errors, $e->getMessage());
+    }
+
+    try{
+        $password = Input::getString('password');
+    } catch (Exception $e) {
+        array_push($errors, $e->getMessage());
+    }
+
+    try{
+        $email = Input::getString('email');
+    } catch (Exception $e) {
+        array_push($errors, $e->getMessage());
+    }
+
+    try{
+        $first_name = Input::getNumber('first_name');
+    } catch (Exception $e) {
+        array_push($errors, $e->getMessage());
+    }
+
+    try{
+        $last_name = Input::getString('last_name');
+    } catch (Exception $e) {
+        array_push($errors, $e->getMessage());
+    }
+
+    try{
+        $phone = Input::getString('phone_number');
+    } catch (Exception $e) {
+        array_push($errors, $e->getMessage());
+    }
+
+    if(!empty($errors)) {
+        return $errors;
+    }
+
+    $userInput = $dbc->prepare('INSERT INTO users (username, password, email, first_name, last_name, phone) VALUES (:username, :password, :email, :first_name, :last_name, :phone)');    
+    $userInput->bindValue(':username', $username,  PDO::PARAM_STR);
+    $userInput->bindValue(':password', $password,  PDO::PARAM_STR);
+    $userInput->bindValue(':email', $email,  PDO::PARAM_STR);
+    $userInput->bindValue(':first_name', ucfirst($first_name),  PDO::PARAM_STR);
+    $userInput->bindValue(':last_name', ucfirst($last_name),  PDO::PARAM_STR);
+    $userInput->bindValue(':phone', $phone,  PDO::PARAM_STR);
+    $userInput->execute();
+
+    return $errors;
+}
+
+var_dump($errors);
 
 ?>
 
@@ -80,73 +153,75 @@ function pageController($dbc)
       $(document).ready(function() {
       
 
-      var validate_form_rules = {
-        rules: {
-          username: {
-            required: true,
-            minlength: 2
-          },
-          password: {
-            required: true,
-            minlength: 10
-          },
-          confirm_password: {
-            required: true,
-            minlength: 10,
-            equalTo: "#password"
-          },
-          email: {
-            required: true,
-            minlength: 7,
-            email: true
-          },
-          first_name: {
-            required: true,
-            minlength: 2
-          },
-          last_name: {
-            required: true,
-            minlength: 2
-          },
-          phone_number: {
-            minlength: 10
-          }, 
-        },
-        messages: {
-          username: {
-            required: "Please enter a username",
-            minlength: "Your username must consist of at least 2 characters"
-          },
-          password: {
-            required: "Please provide a password",
-            minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character"
-          },
-          confirm_password: {
-            required: "Please provide a password",
-            minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character",
-            equalTo: "Please enter the same password as above" 
-          },
-          email: {
-            required: "Please enter a valid email address",
-            minlength: 7
-          },
-          first_name: {
-            required: "Please enter your first name",
-            minlength: 2
-          },
-          last_name: {
-            required: "Please enter your last name",
-            minlength: 2
-          }     
-        }
-      };
+        var validate_form_rules = {
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 2
+                },
+                password: {
+                    required: true,
+                    minlength: 10
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 10,
+                    equalTo: "#password"
+                },
+                email: {
+                    required: true,
+                    minlength: 7,
+                    email: true
+                },
+                first_name: {
+                    required: true,
+                    minlength: 2
+                },
+                last_name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone_number: {
+                    minlength: 10
+                }, 
+            },
+            messages: {
+                username: {
+                    required: "Please enter a username",
+                    minlength: "Your username must consist of at least 2 characters"
+                },
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character"
+                },
+                confirm_password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must consist of at least 10 characters and contain at least one upper case letter, at least two numbers and a special character",
+                    equalTo: "Please enter the same password as above" 
+                },
+                email: {
+                    required: "Please enter a valid email address",
+                    minlength: 7
+                },
+                first_name: {
+                    required: "Please enter your first name",
+                    minlength: 2
+                },
+                last_name: {
+                    required: "Please enter your last name",
+                    minlength: 2
+                }     
+            }
+        };
 
-      $("#register").validate(validate_form_rules);
-
-      $("#submit_button").on("click", function() {
         $("#register").validate(validate_form_rules);
-        alert('Please go back and fill out the fields correctly.');
-      });
+
+        $("#submit_button").on("click", function() {
+            $("#register").validate(validate_form_rules);
+            if(!$("#register").validate(validate_form_rules)) {
+                alert('Please go back and fill out the fields correctly.');
+            }
+        });
     });
     </script>
   </body>
