@@ -5,30 +5,108 @@ require '../bootstrap.php';
 
 function pageController($dbc)
 {
+    $errors = [];
+    $keywords = [];
     $categoryResults = Ad::getAllCategories();
 
     foreach ($categoryResults as $category) {
         $categories[] = $category['category'];
     }
-    var_dump($categories);
 
-    if(isset($_GET['ad-id'])) {
-        $oneAd = Ad::adWithAllFields($_GET['ad-id']);
+    if(Input::has('ad-id')) {
+        $oneAd = Ad::adWithAllFields(Input::getNumber('ad-id'));
     } else {
         header("Location: ads.index.php");
         die();
     }
-
     $ad = $oneAd->getAttributes();
-    // $ad['price'] = '$' . number_format($ad['price'], 2, '.', ',');
-    $keywords = array_values($ad['keywords']);
+    $keyword = array_values($ad);
 
+    var_dump('$_POST');
+    var_dump($_POST);
+
+
+    if(isset($_POST)) {
+        try {
+            $title = Input::getString('title');
+        } catch (Exception $e) {
+            array_push($errors, $e->getMessage());
+        }
+        try {
+            $description = Input::getString('description');
+        } catch (Exception $e) {
+            array_push($errors, $e->getMessage());
+        }
+        try {
+            $price = Input::getNumber('price');
+        } catch (Exception $e) {
+            array_push($errors, $e->getMessage());
+        }
+        try {
+            $keyword_1 = Input::getString('keyword_1');
+        } catch (Exception $e) {
+            array_push($errors, $e->getMessage());
+        }
+        try {
+            $keyword_2 = Input::getString('keyword_2');
+        } catch (Exception $e) {
+            array_push($errors, $e->getMessage());
+        }
+        try {
+            $keyword_3 = Input::getString('keyword_3');
+        } catch (Exception $e) {
+            array_push($errors, $e->getMessage());
+        }  
+    } 
+
+    
+    if(isset($_POST['keyword_1'])){
+        $keywords[0] = $_POST['keyword_1'];
+    } else if (isset($keyword[7][1])) {
+        $keywords[0] = $keyword[7][1];
+    } else {
+        $keywords[0] = '';
+    }
+
+    if(isset($_POST['keyword_2'])){
+        $keywords[1] = $_POST['keyword_2'];
+    } else if (isset($keyword[7][2])) {
+        $keywords[1] = $keyword[7][2];
+    } else {
+        $keywords[1] = '';
+    }
+
+    if(isset($_POST['keyword_3'])){
+        $keywords[2] = $_POST['keyword_3'];
+    } else if (isset($keyword[7][3])) {
+        $keywords[2] = $keyword[7][3];
+    } else {
+        $keywords[2] = '';
+    }
+
+    var_dump('$ad');
     var_dump($ad);
+
+    var_dump('$errors');
+    var_dump($errors);
+    
+    if(empty($errors)) {
+        try {
+            Ad::updateAds(Input::getNumber('ad-id'), $title, $description, $price); 
+            Keyword::updateKeywords(Input::getNumber('ad-id'), $keywords[0], $keywords[1], $keywords[2]);
+            var_dump($keywords);
+        } catch (Exception $e) {
+            echo 'Error';
+            // $_SESSION
+        }
+    }
+
 
     return array (
         'ad' => $ad,
         'categories' => $categories,
-        'keywords' => $keywords
+        'keywords' => $keywords,
+        'errors' => $errors
     );
 }
 
@@ -71,7 +149,7 @@ extract(pageController($dbc));
                             <fieldset data-uk-grid-margin>
                                 <div class="uk-form-rom">
                                     <label class="uk-form-label" for="title">Ad Title</label>
-                                    <input class="uk-form-width-large" type='text' value="<?= $ad['title'] ?>" id="title" name="adTitle">
+                                    <input class="uk-form-width-large" type='text' value="<?= $ad['title'] ?>" id="title" name="title">
                                 </div>
                                 <div class="uk-form-row">
                                     <label class="uk-form-label" for="description">Ad Description</label>
@@ -84,15 +162,15 @@ extract(pageController($dbc));
                                 </div>                           
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="keyword_1">Ad Keyword 1</label>
-                                    <input type='text' <?php if(isset($keywords[0])): ?> value='<?= $keywords[0] ?>' <?php endif ?> name="keyword_1" id="keyword_1">
+                                    <input type='text' value='<?= $keywords[0] ?>' name="keyword_1" id="keyword_1">
                                 </div>
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="keyword_2">Ad Keyword 2</label>
-                                    <input type='text' <?php if(isset($keywords[1])): ?> value='<?= $keywords[1] ?>' <?php endif ?> name="keyword_2" id="keyword_2">
+                                    <input type='text' value='<?= $keywords[1] ?>' name="keyword_2" id="keyword_2">
                                 </div>
                                 <div class="uk-form-row uk-form-horizontal">
                                     <label class="uk-form-label" for="keyword_3">Ad Keyword 3</label>
-                                    <input type='text' <?php if(isset($keywords[2])): ?> value='<?= $keywords[2] ?>' <?php endif ?> name="keyword_3" id="keyword_3">
+                                    <input type='text' value='<?= $keywords[2] ?>' name="keyword_3" id="keyword_3">
                                 </div>
                                 <div class="uk-button-dropdown" data-uk-dropdown="" aria-haspopup="true" aria-expanded="false">
                                     <button class="uk-button">Category <i class="uk-icon-caret-down"></i></button>

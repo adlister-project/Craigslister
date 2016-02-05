@@ -52,9 +52,8 @@ class Input
     public static function getString($key, $min = 1, $max = 254)
     {
         $value = trim(self::get($key));
-        var_dump($key);
 
-        if(!self::notEmpty($key)){
+        if(!self::setAndNotEmpty($key)){
             throw new OutOfRangeException(self::formatKey($key) . ' is out of range!');
         }
 
@@ -82,7 +81,7 @@ class Input
     {
         $value = trim(str_replace(',', '', self::get($key)));
 
-        if (!self::notEmpty($key)){
+        if (!self::setAndNotEmpty($key)){
             throw new OutOfRangeException(self::formatKey($key) . ' is out of range!');
         } else if (!is_numeric($value)) {
             throw new DomainException(self::formatKey($key) . ' must be a number!');

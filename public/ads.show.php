@@ -16,7 +16,7 @@ function pageController($dbc)
     $ad['keywords'] = implode(', ', $ad['keywords']);
     $ad['price'] = '$' . number_format($ad['price'], 2, '.', ',');
     $ad['date_posted'] = new DateTime($ad['date_posted']);
-    $ad['date_posted'] = $ad['date_posted']->format('m-d-Y');
+    $ad['date_posted'] = $ad['date_posted']->format('F d, Y');
 
     // var_dump($ad);
 
@@ -45,19 +45,23 @@ extract(pageController($dbc));
     <body>
         <?php include "../views/partials/navbar.php" ?>
         <div class="uk-container uk-container-center">
-            <h2><?= $ad['title'] ?></h2>
-            <h6>Seller: <a href="users.show.php"><div class="uk-badge"><i class="uk-icon-user"></i>&nbsp; <?= $ad['username'] ?></div></a></h6>
-            <?php if(!empty($ad['image_urls'])): ?>
-                <?php foreach($ad['image_urls'] as $adImage): ?>
-            <img class="uk-thumbnail-mini" src="<?= $adImage ?>" alt="<?= $ad['title'] ?>" />
-                <?php endforeach ?>
-            <?php endif ?>
+            <div class="top">
+                <h2><?= $ad['title'] ?></h2>
+                <h6>Seller: <a href="users.show.php"><div class="uk-badge"><i class="uk-icon-user"></i>&nbsp; <?= $ad['username'] ?></div></a></h6>
+                <?php if(!empty($ad['image_urls'])): ?>
+                    <?php foreach($ad['image_urls'] as $adImage): ?>
+                <img class="uk-thumbnail-mini" src="<?= $adImage ?>" alt="<?= $ad['title'] ?>" />
+                    <?php endforeach ?>
+                <?php endif ?>
+            </div>
             <table class="uk-table">
                 <thead>
                     <tr>
                         <th>Description</th>
                         <th>Date Posted</th>
+                    <?php if($ad['keywords']): ?>
                         <th>Keywords</th>
+                    <?php endif ?>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -65,7 +69,9 @@ extract(pageController($dbc));
                     <tr>
                         <td><?= $ad['description'] ?></td>
                         <td><?= $ad['date_posted'] ?></td>
+                    <?php if($ad['keywords']): ?>
                         <td><?= $ad['keywords'] ?></td>
+                    <?php endif ?>
                         <td><?= $ad['price'] ?></td>
                     </tr>
                 </tbody>
