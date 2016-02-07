@@ -2,7 +2,7 @@
 
 class User extends Model
 {
-	protected static $table = 'users';
+    protected static $table = 'users';
 
   /*
    * Find a user based on username
@@ -24,4 +24,6 @@ class User extends Model
         }
         return $instance;
     }
+
+    
 }
