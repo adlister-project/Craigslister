@@ -37,7 +37,7 @@
                     <div class="uk-width-medium-1-3">
                         <a class="uk-thumbnail uk-overlay-hover" href="#">
                             <figure class="uk-overlay">
-                                <img src="http://placehold.it/350x250" alt="300x110" data-src="holder.js/350x250/auto" data-holder-rendered="true">
+                                <img src="http://img.timeinc.net/time/photoessays/2009/top10_auctions/codex_hammer.jpg" alt="300x110" data-src="holder.js/350x250/auto" data-holder-rendered="true">
                                 <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">For SALE!!</div>
                             </figure>
                             <div class="uk-thumbnail-caption">List Keyword!!</div>
@@ -46,7 +46,7 @@
                     <div class="uk-width-medium-1-3">
                         <a class="uk-thumbnail uk-overlay-hover" href="#">
                             <figure class="uk-overlay">
-                                <img src="http://placehold.it/350x250" alt="300x110" data-src="holder.js/350x250/auto" data-holder-rendered="true">
+                                <img src="http://img.timeinc.net/time/photoessays/2009/top10_auctions/marilyn_monroe.jpg" alt="300x110" data-src="holder.js/350x250/auto" data-holder-rendered="true">
                                 <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">For SALE!!</div>
                             </figure>
                             <div class="uk-thumbnail-caption">List Keyword!!</div>
@@ -55,7 +55,7 @@
                     <div class="uk-width-medium-1-3">
                         <a class="uk-thumbnail uk-overlay-hover" href="#">
                             <figure class="uk-overlay">
-                                <img src="http://placehold.it/350x250" alt="300x110" data-src="holder.js/350x250/auto" data-holder-rendered="true">
+                                <img src="http://img.timeinc.net/time/photoessays/2009/top10_auctions/ferrari_testa_rossa_a.jpg" alt="300x110" data-src="holder.js/350x250/auto" data-holder-rendered="true">
                                 <div class="uk-overlay-panel uk-overlay-background uk-overlay-bottom uk-overlay-slide-bottom">For SALE!!</div>
                             </figure>
                             <div class="uk-thumbnail-caption">List Keyword!!</div>
